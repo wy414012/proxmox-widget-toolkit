@@ -627,9 +627,9 @@ Ext.define('Proxmox.node.APTRepositories', {
 	    method: 'GET',
 	    failure: (response, opts) => Ext.Msg.alert(gettext('Error'), response.htmlStatus),
 	    success: function(response, opts) {
-		const res = response.result;
-		const subscription = !(!res || !res.data || res.data.status.toLowerCase() !== 'active');
-		vm.set('subscriptionActive', subscription);
+		//const res = response.result;
+		//const subscription = !(!res || !res.data || res.data.status.toLowerCase() !== 'active');
+		vm.set('subscriptionActive', true);
 		me.getController().updateState();
 	    },
 	});

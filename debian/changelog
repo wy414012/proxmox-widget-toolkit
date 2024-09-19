@@ -3,6 +3,8 @@ proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
   * 移除订阅弹窗
 
   * 添加CI工作流
+  
+  * 移除存储库检测
 
  -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
 
