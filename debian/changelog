@@ -1,3 +1,11 @@
+proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
+
+  * 移除订阅弹窗
+
+  * 添加CI工作流
+
+ -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
+
 proxmox-widget-toolkit (4.2.3) bookworm; urgency=medium
 
   * realm edit: don't send type as extra parameter when 'useTypeInUrl' is set
