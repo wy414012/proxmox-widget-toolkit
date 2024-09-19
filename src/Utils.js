@@ -560,20 +560,21 @@ utilities: {
 		success: function(response, opts) {
 		    let res = response.result;
 		    if (res === null || res === undefined || !res || res
-			.data.status.toLowerCase() !== 'active') {
-			Ext.Msg.show({
-			    title: gettext('No valid subscription'),
-			    icon: Ext.Msg.WARNING,
-			    message: Proxmox.Utils.getNoSubKeyHtml(res.data.url),
-			    buttons: Ext.Msg.OK,
-			    callback: function(btn) {
-				if (btn !== 'ok') {
-				    return;
-				}
+		    .data.status.toLowerCase() !== 'active') {
+		//	Ext.Msg.show({
+		//	    title: gettext('No valid subscription'),
+		//	    icon: Ext.Msg.WARNING,
+		//	    message: Proxmox.Utils.getNoSubKeyHtml(res.data.url),
+		//	    buttons: Ext.Msg.OK,
+		//	    callback: function(btn) {
+		//		if (btn !== 'ok') {
+		//		    return;
+		//		}
+		//忽略状态检查无论如何都执行orig_cmd
 				orig_cmd();
-			    },
-			});
-		    } else {
+		//	    },
+		//	});
+		        } else {
 			orig_cmd();
 		    }
 		},
