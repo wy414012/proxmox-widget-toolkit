@@ -621,15 +621,15 @@ Ext.define('Proxmox.node.APTRepositories', {
     check_subscription: function() {
 	let me = this;
 	let vm = me.getViewModel();
-
+	//注意，由于跳过弹窗在前，这里不会生效！
 	Proxmox.Utils.API2Request({
 	    url: `/nodes/${me.nodename}/subscription`,
 	    method: 'GET',
 	    failure: (response, opts) => Ext.Msg.alert(gettext('Error'), response.htmlStatus),
 	    success: function(response, opts) {
-		//const res = response.result;
-		//const subscription = !(!res || !res.data || res.data.status.toLowerCase() !== 'active');
-		vm.set('subscriptionActive', true);
+		const res = response.result;
+		const subscription = !(!res || !res.data || res.data.status.toLowerCase() !== 'active');
+		vm.set('subscriptionActive', subscription);
 		me.getController().updateState();
 	    },
 	});
