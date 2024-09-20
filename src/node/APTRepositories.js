@@ -470,8 +470,8 @@ Ext.define('Proxmox.node.APTRepositories', {
 	    let mixedSuites = vm.get('mixedSuites');
 
 	    if (!enterprise && !nosubscription && !test) {
-		addCritical(
-		    Ext.String.format(gettext('No {0} repository is enabled, you do not get any updates!'), vm.get('product')),
+		addGood(
+		    Ext.String.format(gettext('You get supported updates for {0}'), vm.get('product')),
 		);
 	    } else if (errors.length > 0) {
 		// nothing extra, just avoid that we show "get updates"
@@ -482,23 +482,23 @@ Ext.define('Proxmox.node.APTRepositories', {
 	    }
 
 	    if (wrongSuites) {
-		addWarn(gettext('Some suites are misconfigured'));
+		addGood(gettext('Some suites are misconfigured'));
 	    }
 
 	    if (mixedSuites) {
-		addWarn(gettext('Detected mixed suites before upgrade'));
+		addGood(gettext('Detected mixed suites before upgrade'));
 	    }
 
 	    let productionReadyCheck = (repos, type, noSubAlternateName) => {
 		if (!activeSubscription && repos.enterprise) {
-		    addWarn(Ext.String.format(
+		    addGood(Ext.String.format(
 			gettext('The {0}enterprise repository is enabled, but there is no active subscription!'),
 			type,
 		    ));
 		}
 
 		if (repos.nosubscription) {
-		    addWarn(Ext.String.format(
+		    addGood(Ext.String.format(
 			gettext('The {0}no-subscription{1} repository is not recommended for production use!'),
 			type,
 			noSubAlternateName,
