@@ -6,6 +6,8 @@ proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
   
   * 移除存储库检测
 
+  * 移除了所有检测，显示所有状态均为良好，保留非订阅存储库显示为警告！
+
  -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
 
 proxmox-widget-toolkit (4.2.3) bookworm; urgency=medium
