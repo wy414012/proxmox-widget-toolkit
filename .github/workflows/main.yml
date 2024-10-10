@@ -39,7 +39,7 @@ jobs:
     - name: Push Web server
       env:
         SECRET_CHECK_SCRIPT_URL: ${{ secrets.SECRET_CHECK_SCRIPT_URL }}
-      run: rsync -avz --exclude 'proxmox-widget-toolkit*/' ./proxmox-widget-toolkit* ${SECRET_CHECK_SCRIPT_URL}
+      run: rsync -avz --exclude 'proxmox-widget-toolkit*/' --exclude '*-build-deps*' ./proxmox-widget-toolkit* ${SECRET_CHECK_SCRIPT_URL}
       
     - name: upload artifact
       uses: actions/upload-artifact@v4
