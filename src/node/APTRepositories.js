@@ -297,11 +297,11 @@ Ext.define('Proxmox.node.APTRepositoriesGrid', {
 		if (components.length === 1) {
 		    // FIXME: this should be a flag set to the actual repsotiories, i.e., a tristate
 		    // like production-ready = <yes|no|other> (Option<bool>)
-		    if (components[0].match(/\w+(-no-subscription|test)\s*$/i)) {
+		    if (components[0].match(/\w+-test\s*$/i)) {
 			metaData.tdCls = 'proxmox-warning-row';
 			err = '<i class="fa fa-fw warning fa-exclamation-circle"></i> ';
 
-			let qtip = components[0].match(/no-subscription/)
+			let qtip = components[0].match(/test/)
 			    ? gettext('The no-subscription repository is NOT production-ready')
 			    : gettext('The test repository may contain unstable updates')
 			    ;
@@ -464,7 +464,7 @@ Ext.define('Proxmox.node.APTRepositories', {
 	    let mixedSuites = vm.get('mixedSuites');
 
 	    if (!enterprise && !nosubscription && !test) {
-		addCritical(
+		addGood(
 		    Ext.String.format(gettext('No {0} repository is enabled, you do not get any updates!'), vm.get('product')),
 		);
 	    } else if (errors.length > 0) {
@@ -476,19 +476,19 @@ Ext.define('Proxmox.node.APTRepositories', {
 	    }
 
 	    if (wrongSuites) {
-		addWarn(gettext('Some suites are misconfigured'));
+		addGood(gettext('Some suites are misconfigured'));
 	    }
 
 	    if (mixedSuites) {
-		addWarn(gettext('Detected mixed suites before upgrade'));
+		addGood(gettext('Detected mixed suites before upgrade'));
 	    }
 
 	    if (!activeSubscription && enterprise) {
-		addWarn(gettext('The enterprise repository is enabled, but there is no active subscription!'));
+		addGood(gettext('The enterprise repository is enabled, but there is no active subscription!'));
 	    }
 
 	    if (nosubscription) {
-		addWarn(gettext('The no-subscription repository is not recommended for production use!'));
+		addGood(gettext('The no-subscription repository is not recommended for production use!'));
 	    }
 
 	    if (test) {
@@ -602,9 +602,9 @@ Ext.define('Proxmox.node.APTRepositories', {
 	    method: 'GET',
 	    failure: (response, opts) => Ext.Msg.alert(gettext('Error'), response.htmlStatus),
 	    success: function(response, opts) {
-		const res = response.result;
-		const subscription = !(!res || !res.data || res.data.status.toLowerCase() !== 'active');
-		vm.set('subscriptionActive', subscription);
+		//const res = response.result;
+		//const subscription = !(!res || !res.data || res.data.status.toLowerCase() !== 'active');
+		vm.set('subscriptionActive', true);
 		me.getController().updateState();
 	    },
 	});

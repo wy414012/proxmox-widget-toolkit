@@ -544,18 +544,18 @@ utilities: {
 		    let res = response.result;
 		    if (res === null || res === undefined || !res || res
 			.data.status.toLowerCase() !== 'active') {
-			Ext.Msg.show({
-			    title: gettext('No valid subscription'),
-			    icon: Ext.Msg.WARNING,
-			    message: Proxmox.Utils.getNoSubKeyHtml(res.data.url),
-			    buttons: Ext.Msg.OK,
-			    callback: function(btn) {
-				if (btn !== 'ok') {
-				    return;
-				}
+	//		Ext.Msg.show({
+	//		    title: gettext('No valid subscription'),
+	//		    icon: Ext.Msg.WARNING,
+	//		    message: Proxmox.Utils.getNoSubKeyHtml(res.data.url),
+	//		    buttons: Ext.Msg.OK,
+	//		    callback: function(btn) {
+	//			if (btn !== 'ok') {
+	//			    return;
+	//			}
 				orig_cmd();
-			    },
-			});
+	//		    },
+	//		});
 		    } else {
 			orig_cmd();
 		    }
@@ -1243,19 +1243,20 @@ utilities: {
 	let fmt = (txt, cls) => `<i class="fa fa-fw fa-lg fa-${cls}"></i>${txt}`;
 
 	let getUpdates = Ext.String.format(gettext('{0} updates'), product);
-	let noRepo = Ext.String.format(gettext('No {0} repository enabled!'), product);
+	//let noRepo = Ext.String.format(gettext('No {0} repository enabled!'), product);
 
 	if (status === 'ok') {
 	    return fmt(getUpdates, 'check-circle good') + ' ' +
 		fmt(gettext('Production-ready Enterprise repository enabled'), 'check-circle good');
 	} else if (status === 'no-sub') {
 	    return fmt(gettext('Production-ready Enterprise repository enabled'), 'check-circle good') + ' ' +
-		    fmt(gettext('Enterprise repository needs valid subscription'), 'exclamation-circle warning');
+		    fmt(gettext('Enterprise repository needs valid subscription'), 'exclamation-circle good');
 	} else if (status === 'non-production') {
 	    return fmt(getUpdates, 'check-circle good') + ' ' +
-		   fmt(gettext('Non production-ready repository enabled!'), 'exclamation-circle warning');
+		   fmt(gettext('Non production-ready repository enabled!'), 'exclamation-circle good');
 	} else if (status === 'no-repo') {
-	    return fmt(noRepo, 'exclamation-circle critical');
+	    return fmt(getUpdates, 'check-circle good') + ' ' +
+	           fmt(gettext('Production-ready Enterprise repository enabled'), 'check-circle good');
 	}
 
 	return Proxmox.Utils.unknownText;
