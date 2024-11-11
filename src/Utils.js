@@ -1358,6 +1358,24 @@ utilities: {
 	);
     },
 
+    // Convert utf-8 string to base64.
+    // This also escapes unicode characters such as emojis.
+    utf8ToBase64: function(string) {
+	let bytes = new TextEncoder().encode(string);
+	const escapedString = Array.from(bytes, (byte) =>
+	    String.fromCodePoint(byte),
+	).join("");
+	return btoa(escapedString);
+    },
+
+    // Converts a base64 string into a utf8 string.
+    // Decodes escaped unicode characters correctly.
+    base64ToUtf8: function(b64_string) {
+	let string = atob(b64_string);
+	let bytes = Uint8Array.from(string, (m) => m.codePointAt(0));
+	return new TextDecoder().decode(bytes);
+    },
+
     stringToRGB: function(string) {
 	let hash = 0;
 	if (!string) {
@@ -1508,6 +1526,26 @@ utilities: {
 	me.IP6_dotnotation_match = new RegExp("^(" + IPV6_REGEXP + ")(?:\\.(\\d+))?$");
 	me.Vlan_match = /^vlan(\d+)/;
 	me.VlanInterface_match = /(\w+)\.(\d+)/;
+
+
+	// Taken from proxmox-schema and ported to JS
+	let PORT_REGEX_STR = "(?:[0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])";
+	let IPRE_BRACKET_STR = "(?:" + IPV4_REGEXP + "|\\[(?:" + IPV6_REGEXP + ")\\])";
+	let DNS_NAME_STR = "(?:(?:" + DnsName_REGEXP + "\\.)*" + DnsName_REGEXP + ")";
+	let HTTP_URL_REGEX = "^https?://(?:(?:(?:"
+	    + DNS_NAME_STR
+	    + "|"
+	    + IPRE_BRACKET_STR
+	    + ")(?::"
+	    + PORT_REGEX_STR
+	    + ")?)|"
+	    + IPV6_REGEXP
+	    + ")(?:/[^\x00-\x1F\x7F]*)?$";
+
+	me.httpUrlRegex = new RegExp(HTTP_URL_REGEX);
+
+	// Same as SAFE_ID_REGEX in proxmox-schema
+	me.safeIdRegex = /^(?:[A-Za-z0-9_][A-Za-z0-9._\\-]*)$/;
     },
 });
 
