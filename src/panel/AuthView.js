@@ -11,7 +11,6 @@ Ext.define('Proxmox.panel.AuthView', {
     },
 
     baseUrl: '/access/domains',
-    useTypeInUrl: false,
 
     columns: [
 	{
@@ -25,6 +24,14 @@ Ext.define('Proxmox.panel.AuthView', {
 	    width: 100,
 	    sortable: true,
 	    dataIndex: 'type',
+	},
+	{
+	    header: gettext('Default'),
+	    width: 80,
+	    sortable: true,
+	    dataIndex: 'default',
+	    renderer: isDefault => isDefault ? Proxmox.Utils.renderEnabledIcon(true) : '',
+	    align: 'center',
 	},
 	{
 	    header: gettext('Comment'),
@@ -45,9 +52,12 @@ Ext.define('Proxmox.panel.AuthView', {
 
     openEditWindow: function(authType, realm) {
 	let me = this;
+	const { useTypeInUrl, onlineHelp } = Proxmox.Schema.authDomains[authType];
+
 	Ext.create('Proxmox.window.AuthEditBase', {
 	    baseUrl: me.baseUrl,
-	    useTypeInUrl: me.useTypeInUrl,
+	    useTypeInUrl,
+	    onlineHelp,
 	    authType,
 	    realm,
 	    listeners: {
@@ -123,7 +133,7 @@ Ext.define('Proxmox.panel.AuthView', {
 		xtype: 'proxmoxStdRemoveButton',
 		getUrl: (rec) => {
 		    let url = me.baseUrl;
-		    if (me.useTypeInUrl) {
+		    if (Proxmox.Schema.authDomains[rec.data.type].useTypeInUrl) {
 			url += `/${rec.get('type')}`;
 		    }
 		    url += `/${rec.getId()}`;

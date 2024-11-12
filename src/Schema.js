@@ -4,10 +4,13 @@ Ext.define('Proxmox.Schema', { // a singleton
     authDomains: {
 	pam: {
 	    name: 'Linux PAM',
+	    ipanel: 'pmxAuthSimplePanel',
+	    onlineHelp: 'user-realms-pam',
 	    add: false,
-	    edit: false,
+	    edit: true,
 	    pwchange: true,
 	    sync: false,
+	    useTypeInUrl: false,
 	},
 	openid: {
 	    name: gettext('OpenID Connect Server'),
@@ -18,6 +21,7 @@ Ext.define('Proxmox.Schema', { // a singleton
 	    pwchange: false,
 	    sync: false,
 	    iconCls: 'pmx-itype-icon-openid-logo',
+	    useTypeInUrl: true,
 	},
 	ldap: {
 	    name: gettext('LDAP Server'),
@@ -28,6 +32,7 @@ Ext.define('Proxmox.Schema', { // a singleton
 	    tfa: true,
 	    pwchange: false,
 	    sync: true,
+	    useTypeInUrl: true,
 	},
 	ad: {
 	    name: gettext('Active Directory Server'),
@@ -38,6 +43,7 @@ Ext.define('Proxmox.Schema', { // a singleton
 	    tfa: true,
 	    pwchange: false,
 	    sync: true,
+	    useTypeInUrl: true,
 	},
     },
     // to add or change existing for product specific ones
