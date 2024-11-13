@@ -36,15 +36,12 @@ Ext.define('Proxmox.panel.WebhookEditPanel', {
 
     columnB: [
 	{
+	    xtype: 'fieldcontainer',
+	    fieldLabel: gettext('Method/URL'),
 	    layout: 'hbox',
 	    border: false,
 	    margin: '0 0 5 0',
 	    items: [
-		{
-		    xtype: 'displayfield',
-		    value: gettext('Method/URL:'),
-		    width: 125,
-		},
 		{
 		    xtype: 'proxmoxKVComboBox',
 		    name: 'method',
@@ -73,10 +70,12 @@ Ext.define('Proxmox.panel.WebhookEditPanel', {
 	    xtype: 'pmxWebhookKeyValueList',
 	    name: 'header',
 	    fieldLabel: gettext('Headers'),
+	    subject: gettext('Header'),
 	    maskValues: false,
 	    cbind: {
 		isCreate: '{isCreate}',
 	    },
+	    margin: '0 0 10 0',
 	},
 	{
 	    xtype: 'textarea',
@@ -87,16 +86,18 @@ Ext.define('Proxmox.panel.WebhookEditPanel', {
 	    fieldStyle: {
 		'font-family': 'monospace',
 	    },
-	    margin: '15 0 0 0',
+	    margin: '0 0 5 0',
 	},
 	{
 	    xtype: 'pmxWebhookKeyValueList',
 	    name: 'secret',
 	    fieldLabel: gettext('Secrets'),
+	    subject: gettext('Secret'),
 	    maskValues: true,
 	    cbind: {
 		isCreate: '{isCreate}',
 	    },
+	    margin: '0 0 10 0',
 	},
 	{
 	    xtype: 'proxmoxtextfield',
@@ -159,7 +160,7 @@ Ext.define('Proxmox.panel.WebhookEditPanel', {
 });
 
 Ext.define('Proxmox.form.WebhookKeyValueList', {
-    extend: 'Ext.container.Container',
+    extend: 'Ext.form.FieldContainer',
     alias: 'widget.pmxWebhookKeyValueList',
 
     mixins: [
@@ -168,6 +169,9 @@ Ext.define('Proxmox.form.WebhookKeyValueList', {
 
     // override for column header
     fieldTitle: gettext('Item'),
+
+    // the text for a single element, used for the add button
+    subject: undefined,
 
     // will be applied to the textfields
     maskRe: undefined,
@@ -278,7 +282,7 @@ Ext.define('Proxmox.form.WebhookKeyValueList', {
 	    me.lookup('grid').getStore().add({
 		headerName: '',
 		headerValue: '',
-		emptyText: '',
+		emptyText: gettext('Value'),
 		newValue: true,
 	    });
 	},
@@ -319,104 +323,99 @@ Ext.define('Proxmox.form.WebhookKeyValueList', {
 	},
     },
 
-    margin: '10 0 5 0',
-
-    items: [
-	{
-	    layout: 'hbox',
-	    border: false,
-	    items: [
-		{
-		    xtype: 'displayfield',
-		    width: 125,
-		},
-		{
-		    xtype: 'button',
-		    text: gettext('Add'),
-		    iconCls: 'fa fa-plus-circle',
-		    handler: 'addLine',
-		    margin: '0 5 5 0',
-		},
-	    ],
-	},
-	{
-	    xtype: 'grid',
-	    reference: 'grid',
-	    minHeight: 100,
-	    maxHeight: 100,
-	    scrollable: 'vertical',
-	    margin: '0 0 0 125',
-
-	    viewConfig: {
-		deferEmptyText: false,
-	    },
-
-	    store: {
-		listeners: {
-		    update: function() {
-			this.commitChanges();
-		    },
-		},
-	    },
-	},
-    ],
-
     initComponent: function() {
 	let me = this;
 
-	for (const [key, value] of Object.entries(me.gridConfig ?? {})) {
-	    me.items[1][key] = value;
-	}
-
-	me.items[0].items[0].value = me.fieldLabel + ':';
-
-	me.items[1].columns = [
+	let items = [
 	    {
-		header: me.fieldTtitle,
-		dataIndex: 'headerName',
-		xtype: 'widgetcolumn',
-		widget: {
-		    xtype: 'textfield',
-		    isFormField: false,
-		    maskRe: me.maskRe,
-		    allowBlank: false,
-		    queryMode: 'local',
+		xtype: 'grid',
+		reference: 'grid',
+		minHeight: 100,
+		maxHeight: 100,
+		scrollable: 'vertical',
+
+		viewConfig: {
+		    deferEmptyText: false,
+		},
+
+		store: {
 		    listeners: {
-			change: 'itemChange',
+			update: function() {
+			    this.commitChanges();
+			},
 		    },
 		},
-		flex: 1,
+		margin: '5 0 5 0',
+		columns: [
+		    {
+			header: me.fieldTtitle,
+			dataIndex: 'headerName',
+			xtype: 'widgetcolumn',
+			widget: {
+			    xtype: 'textfield',
+			    isFormField: false,
+			    maskRe: me.maskRe,
+			    allowBlank: false,
+			    queryMode: 'local',
+			    emptyText: gettext('Key'),
+			    listeners: {
+				change: 'itemChange',
+			    },
+			},
+			onWidgetAttach: function(_col, widget) {
+			    widget.isValid();
+			},
+			flex: 1,
+		    },
+		    {
+			header: me.fieldTtitle,
+			dataIndex: 'headerValue',
+			xtype: 'widgetcolumn',
+			widget: {
+			    xtype: 'proxmoxtextfield',
+			    inputType: me.maskValues ? 'password' : 'text',
+			    isFormField: false,
+			    maskRe: me.maskRe,
+			    queryMode: 'local',
+			    listeners: {
+				change: 'itemChange',
+			    },
+			    allowBlank: !me.isCreate && me.maskValues,
+
+			    bind: {
+				emptyText: '{record.emptyText}',
+			    },
+			},
+			onWidgetAttach: function(_col, widget) {
+			    widget.isValid();
+			},
+			flex: 1,
+		    },
+		    {
+			xtype: 'widgetcolumn',
+			width: 40,
+			widget: {
+			    xtype: 'button',
+			    iconCls: 'fa fa-trash-o',
+			},
+		    },
+		],
 	    },
 	    {
-		header: me.fieldTtitle,
-		dataIndex: 'headerValue',
-		xtype: 'widgetcolumn',
-		widget: {
-		    xtype: 'proxmoxtextfield',
-		    inputType: me.maskValues ? 'password' : 'text',
-		    isFormField: false,
-		    maskRe: me.maskRe,
-		    queryMode: 'local',
-		    listeners: {
-			change: 'itemChange',
-		    },
-		    allowBlank: !me.isCreate && me.maskValues,
-
-		    bind: {
-			emptyText: '{record.emptyText}',
-		    },
-		},
-		flex: 1,
-	    },
-	    {
-		xtype: 'widgetcolumn',
-		width: 40,
-		widget: {
-		    xtype: 'button',
-		    iconCls: 'fa fa-trash-o',
-		},
+		xtype: 'button',
+		text: me.subject ? Ext.String.format(gettext('Add {0}'), me.subject) : gettext('Add'),
+		iconCls: 'fa fa-plus-circle',
+		handler: 'addLine',
 	    },
 	];
+
+	for (const [key, value] of Object.entries(me.gridConfig ?? {})) {
+	    items[0][key] = value;
+	}
+
+	Ext.apply(me, {
+	    items,
+	});
 
 	me.callParent();
 	me.initField();
