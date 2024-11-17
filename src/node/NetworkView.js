@@ -33,6 +33,9 @@ Ext.define('Proxmox.node.NetworkView', {
 
     showApplyBtn: false,
 
+    // for options passed down to the network edit window
+    editOptions: {},
+
     initComponent: function() {
 	let me = this;
 
@@ -100,6 +103,7 @@ Ext.define('Proxmox.node.NetworkView', {
 		nodename: me.nodename,
 		iface: rec.data.iface,
 		iftype: rec.data.type,
+		...me.editOptions,
 		listeners: {
 		    destroy: () => reload(),
 		},
@@ -170,6 +174,7 @@ Ext.define('Proxmox.node.NetworkView', {
 		    nodename: me.nodename,
 		    iftype: iType,
 		    iface_default: findNextFreeInterfaceId(iDefault ?? iType),
+		    ...me.editOptions,
 		    onlineHelp: 'sysadmin_network_configuration',
 		    listeners: {
 			destroy: () => reload(),
