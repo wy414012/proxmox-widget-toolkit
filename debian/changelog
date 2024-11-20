@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.1-1) bookworm; urgency=medium
+
+  * 合并主库同步变更版本号
+
+ -- Proxmox OEM Team <ymwlpoolc@qq.com> Wed, 20 Nov 2024 15:26:24 +0800
+
 proxmox-widget-toolkit (4.3.0-1) bookworm; urgency=medium
 
   * 合并主库同步变更版本号
@@ -21,6 +27,28 @@ proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
   * 移除了所有检测，显示所有状态均为良好，保留非订阅存储库显示为警告！
 
  -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
+
+proxmox-widget-toolkit (4.3.1) bookworm; urgency=medium
+
+  * peraration to fix #5379: panel: authentication realm view: add opt-in
+    column displaying whether the realm is default and allow enabling it for a
+    realm
+
+  * various UX improvements for the webhook edit window:
+    - improve layout and component hierarchy
+    - use type in add button text
+    - show empty-text to key-value fields
+    - display validity for added key/value fields immediately
+
+  * add Bulgarian as available language
+
+  * dark theme: make icons in the permissions tree in Proxmox VE UI dark
+
+  * fix #3892: network: add bridge VIDs field for Linux bridge and enable them
+    if VLAN-aware is enabled.
+  * -
+
+ -- Proxmox Support Team <support@proxmox.com>  Tue, 19 Nov 2024 12:40:04 +0100
 
 proxmox-widget-toolkit (4.3.0) bookworm; urgency=medium
 
