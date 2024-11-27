@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.2-1) bookworm; urgency=medium
+
+  * 合并主库同步变更版本号
+
+ -- Proxmox OEM Team <ymwlpoolc@qq.com> Wed, 27 Nov 2024 15:10:54 +0800
+
 proxmox-widget-toolkit (4.3.1-1) bookworm; urgency=medium
 
   * 合并主库同步变更版本号
@@ -28,6 +34,16 @@ proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
 
  -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
 
+proxmox-widget-toolkit (4.3.2) bookworm; urgency=medium
+
+  * node: service state: restore original behavior
+
+  * window: add consent modal widget
+
+  * object grid: add support for multiline textarea widget
+
+ -- Proxmox Support Team <support@proxmox.com>  Mon, 25 Nov 2024 18:32:21 +0100
+
 proxmox-widget-toolkit (4.3.1) bookworm; urgency=medium
 
   * peraration to fix #5379: panel: authentication realm view: add opt-in
@@ -46,7 +62,6 @@ proxmox-widget-toolkit (4.3.1) bookworm; urgency=medium
 
   * fix #3892: network: add bridge VIDs field for Linux bridge and enable them
     if VLAN-aware is enabled.
-  * -
 
  -- Proxmox Support Team <support@proxmox.com>  Tue, 19 Nov 2024 12:40:04 +0100
 
