@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.3-1) bookworm; urgency=medium
+
+  * 合并主库同步变更版本号
+
+ -- Proxmox OEM Team <ymwlpoolc@qq.com> Thu, 28 Nov 2024 15:48:15 +0800
+
 proxmox-widget-toolkit (4.3.2-1) bookworm; urgency=medium
 
   * 合并主库同步变更版本号
@@ -33,6 +39,13 @@ proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
   * 移除了所有检测，显示所有状态均为良好，保留非订阅存储库显示为警告！
 
  -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
+
+proxmox-widget-toolkit (4.3.3) bookworm; urgency=medium
+
+  * display-edit field: add emptyText getter and setter to support binding to
+    the property of the underlying edit-field directly.
+
+ -- Proxmox Support Team <support@proxmox.com>  Wed, 27 Nov 2024 12:25:44 +0100
 
 proxmox-widget-toolkit (4.3.2) bookworm; urgency=medium
 
