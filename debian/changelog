@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.7-1) bookworm; urgency=medium
+
+  * 合并到最新4.3.7提交
+
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Thu, 13 Mar 2025 15:37:56 +0800
+
 proxmox-widget-toolkit (4.3.4-1) bookworm; urgency=medium
 
   * 合并主库最新提交，同步变更版本号
@@ -45,6 +51,32 @@ proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
   * 移除了所有检测，显示所有状态均为良好，保留非订阅存储库显示为警告！
 
  -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
+
+proxmox-widget-toolkit (4.3.7) bookworm; urgency=medium
+
+  * authentication realm edit: use correct property to derive the realm type.
+
+  * authentication view: allow downstream users to override the API path to
+    query available authentication realms from.
+
+  * from: realm combobox: allow downstream users to override the API path to
+    query available authentication realms from.
+
+ -- Proxmox Support Team <support@proxmox.com>  Wed, 26 Feb 2025 19:12:24 +0100
+
+proxmox-widget-toolkit (4.3.6) bookworm; urgency=medium
+
+  * object grid: fix onlineHelp setting from editorConfig for row editors
+
+ -- Proxmox Support Team <support@proxmox.com>  Tue, 25 Feb 2025 18:08:50 +0100
+
+proxmox-widget-toolkit (4.3.5) bookworm; urgency=medium
+
+  * add form-field component for entering certificate fingerprints
+
+  * fix #6088: notification: matcher: use more descriptive strings
+
+ -- Proxmox Support Team <support@proxmox.com>  Tue, 25 Feb 2025 17:08:11 +0100
 
 proxmox-widget-toolkit (4.3.4) bookworm; urgency=medium
 
