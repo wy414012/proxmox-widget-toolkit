@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.11-1) bookworm; urgency=medium
+
+  * 合并主库提交.
+
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Thu, 15 May 2025 21:12:53 +0800
+
 proxmox-widget-toolkit (4.3.10-1) bookworm; urgency=medium
 
   * 合并到最新4.3.10提交
@@ -57,6 +63,12 @@ proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
   * 移除了所有检测，显示所有状态均为良好，保留非订阅存储库显示为警告！
 
  -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
+
+proxmox-widget-toolkit (4.3.11) bookworm; urgency=medium
+
+  * language selector: add Czech as available option.
+
+ -- Proxmox Support Team <support@proxmox.com>  Wed, 14 May 2025 14:41:32 +0200
 
 proxmox-widget-toolkit (4.3.10) bookworm; urgency=medium
 
