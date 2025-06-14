@@ -45,7 +45,7 @@ jobs:
       run: sudo apt-get -y install devscripts equivs
     
     - name: install deps    
-      run: sudo DEBIAN_FRONTEND=noninteractive mk-build-deps --install --remove
+      run: sudo mk-build-deps -i < <(yes) || true
             
     - name: run make
       run: make clean && make deb
