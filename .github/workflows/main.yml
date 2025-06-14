@@ -25,13 +25,9 @@ jobs:
         git \
         git-lfs \
         openssl \
-        openssh-server \
-        nano \
         devscripts \
         equivs \
         gawk \
-        locales \
-        locales-all \
         gnupg2 \
         systemd \
         jq \
