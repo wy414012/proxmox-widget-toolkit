@@ -52,7 +52,12 @@ jobs:
       
     - name: run make
       run: make clean && make deb
-      
+
+    - name: List what has been built
+      if: ${{ !cancelled() }}
+      run: |
+          find . -name "*.deb" -o -name "*.buildinfo" -o -name "*.changes" | xargs ls -ld
+
     - name: upload artifact
       uses: actions/upload-artifact@v4
       with:
