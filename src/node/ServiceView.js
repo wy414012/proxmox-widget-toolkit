@@ -62,11 +62,14 @@ Ext.define('Proxmox.node.ServiceView', {
             let {
                 data: { service },
             } = me.getSelectionModel().getSelection()[0];
+
+            let viewSize = Ext.getBody().getViewSize();
+
             Ext.create('Ext.window.Window', {
                 title: gettext('Syslog') + ': ' + service,
                 modal: true,
-                width: 800,
-                height: 400,
+                width: viewSize.width > 1600 ? 1000 : 800,
+                height: viewSize.height > 900 ? 800 : 600,
                 layout: 'fit',
                 items: {
                     xtype: 'proxmoxLogView',
@@ -175,8 +178,12 @@ Ext.define('Proxmox.node.ServiceView', {
                     if (unitState === 'masked' || unitState === 'not-found') {
                         return 'proxmox-disabled-row';
                     } else if (unitState === 'unknown') {
-                        if (record.get('name') === 'syslog') {
-                            return 'proxmox-disabled-row'; // replaced by journal on most hosts
+                        if (
+                            record.get('name') === 'syslog' || // replaced by journal on most hosts
+                            record.get('name') === 'systemd-timesyncd' || // chrony is preferred
+                            record.get('name') === 'proxmox-firewall' // opt-in NFT based variant
+                        ) {
+                            return 'proxmox-disabled-row';
                         }
                         return 'proxmox-warning-row';
                     }
