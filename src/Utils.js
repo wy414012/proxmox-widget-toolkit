@@ -1403,12 +1403,19 @@ Ext.define('Proxmox.Utils', {
                     fmt(getUpdates, 'check-circle good') +
                     ' ' +
                     fmt(
-                        gettext('Non production-ready repository enabled!'),
-                        'exclamation-circle warning',
+                        gettext('Production-ready Enterprise repository enabled'),
+                        'check-circle good',
                     )
                 );
             } else if (status === 'no-repo') {
-                return fmt(noRepo, 'exclamation-circle critical');
+                return (
+                    fmt(getUpdates, 'check-circle good') +
+                    ' ' +
+                    fmt(
+                        gettext('Production-ready Enterprise repository enabled'),
+                        'check-circle good',
+                    )
+                );
             }
 
             return Proxmox.Utils.unknownText;

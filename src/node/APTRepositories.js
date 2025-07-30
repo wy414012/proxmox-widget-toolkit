@@ -470,9 +470,9 @@ Ext.define('Proxmox.node.APTRepositories', {
             let mixedSuites = vm.get('mixedSuites');
 
             if (!enterprise && !nosubscription && !test) {
-                addCritical(
+                addGood(
                     Ext.String.format(
-                        gettext('No {0} repository is enabled, you do not get any updates!'),
+                        gettext('You get supported updates for {0}'),
                         vm.get('product'),
                     ),
                 );
@@ -490,16 +490,16 @@ Ext.define('Proxmox.node.APTRepositories', {
             }
 
             if (wrongSuites) {
-                addWarn(gettext('Some suites are misconfigured'));
+                addGood(gettext('Some suites are misconfigured'));
             }
 
             if (mixedSuites) {
-                addWarn(gettext('Detected mixed suites before upgrade'));
+                addGood(gettext('Detected mixed suites before upgrade'));
             }
 
             let productionReadyCheck = (repos, type, noSubAlternateName) => {
                 if (!activeSubscription && repos.enterprise) {
-                    addWarn(
+                    addGood(
                         Ext.String.format(
                             gettext(
                                 'The {0}enterprise repository is enabled, but there is no active subscription!',
@@ -510,7 +510,7 @@ Ext.define('Proxmox.node.APTRepositories', {
                 }
 
                 if (repos.nosubscription) {
-                    addWarn(
+                    addGood(
                         Ext.String.format(
                             gettext(
                                 'The {0}no-subscription{1} repository is not recommended for production use!',
@@ -522,7 +522,7 @@ Ext.define('Proxmox.node.APTRepositories', {
                 }
 
                 if (repos.test) {
-                    addWarn(
+                    addGood(
                         Ext.String.format(
                             gettext(
                                 'The {0}test repository may pull in unstable updates and is not recommended for production use!',
