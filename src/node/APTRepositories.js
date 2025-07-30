@@ -649,7 +649,7 @@ Ext.define('Proxmox.node.APTRepositories', {
             failure: (response, opts) => Ext.Msg.alert(gettext('Error'), response.htmlStatus),
             success: function (response, opts) {
                 const res = response.result;
-                const subscription = !(
+                const _subscription = !(
                     !res ||
                     !res.data ||
                     res.data.status.toLowerCase() !== 'active'
