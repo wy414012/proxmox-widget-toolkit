@@ -1375,7 +1375,7 @@ Ext.define('Proxmox.Utils', {
             let fmt = (txt, cls) => `<i class="fa fa-fw fa-lg fa-${cls}"></i>${txt}`;
 
             let getUpdates = Ext.String.format(gettext('{0} updates'), product);
-            let noRepo = Ext.String.format(gettext('No {0} repository enabled!'), product);
+            let _noRepo = Ext.String.format(gettext('No {0} repository enabled!'), product);
 
             if (status === 'ok') {
                 return (
