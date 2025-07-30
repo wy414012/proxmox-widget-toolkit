@@ -27,6 +27,7 @@ jobs:
         wget \
         unzip \
         git \
+        rsync \
         git-lfs \
         openssl \
         devscripts \
