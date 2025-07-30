@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.12-2) bookworm; urgency=medium
+
+  * fix:修复存储库状态非全绿的bug
+
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Wed, 30 Jul 2025 20:11:33 +0800
+
 proxmox-widget-toolkit (4.3.12-1) bookworm; urgency=medium
 
   * Update 4.3.12-1 add stable
