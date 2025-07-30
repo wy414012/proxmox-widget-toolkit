@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (5.0.2-2) trixie; urgency=medium
+
+  * fix status bump:5.0.2-2
+
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Wed, 30 Jul 2025 20:13:40 +0800
+
 proxmox-widget-toolkit (5.0.2-1) trixie; urgency=medium
 
   * Update 5.0.2-1
