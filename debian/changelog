@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.12-1) bookworm; urgency=medium
+
+  * Update 4.3.12-1 add stable
+
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Wed, 30 Jul 2025 17:41:16 +0800
+
 proxmox-widget-toolkit (4.3.11-1) bookworm; urgency=medium
 
   * 合并主库提交.
@@ -63,6 +69,17 @@ proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
   * 移除了所有检测，显示所有状态均为良好，保留非订阅存储库显示为警告！
 
  -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
+ 
+proxmox-widget-toolkit (4.3.12) bookworm; urgency=medium
+
+  * node service view: rename 'Syslog' button to 'Service System Log'.
+
+  * notifications:
+    - fix #5588: smtp: fix Authenticate checkbox in Chromium.
+    - smtp: only show 'Unchanged' in password field when it makes sense.
+    - smtp: don't split translatable string.
+
+ -- Proxmox Support Team <support@proxmox.com>  Wed, 16 Jul 2025 00:33:18 +0200
 
 proxmox-widget-toolkit (4.3.11) bookworm; urgency=medium
 
