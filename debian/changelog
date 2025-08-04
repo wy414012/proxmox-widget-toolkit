@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.12-3) bookworm; urgency=medium
+
+  * fix:清理存储库检测
+
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Mon, 04 Aug 2025 17:56:55 +0800
+
 proxmox-widget-toolkit (4.3.12-2) bookworm; urgency=medium
 
   * fix:修复存储库状态非全绿的bug
