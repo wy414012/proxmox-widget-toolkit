@@ -1,8 +1,10 @@
-proxmox-widget-toolkit (5.0.3-1) trixie; urgency=medium
+proxmox-widget-toolkit (5.0.4) trixie; urgency=medium
 
-  * fix status bump:5.0.3-1
+  * network edit: fix hiding of altnames field if disabled by config.
 
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Mon, 04 Aug 2025 17:32:29 +0800
+  * RRD chart: fix title lookup for object series.
+
+ -- Proxmox Support Team <support@proxmox.com>  Mon, 04 Aug 2025 16:11:46 +0200
 
 proxmox-widget-toolkit (5.0.3) trixie; urgency=medium
 
