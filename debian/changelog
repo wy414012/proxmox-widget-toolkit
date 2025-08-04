@@ -1,87 +1,20 @@
-proxmox-widget-toolkit (5.0.2-2) trixie; urgency=medium
+proxmox-widget-toolkit (5.0.3-1) trixie; urgency=medium
 
-  * fix status bump:5.0.2-2
+  * fix status bump:5.0.3-1
 
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Wed, 30 Jul 2025 20:13:40 +0800
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Mon, 04 Aug 2025 17:32:29 +0800
 
-proxmox-widget-toolkit (5.0.2-1) trixie; urgency=medium
+proxmox-widget-toolkit (5.0.3) trixie; urgency=medium
 
-  * Update 5.0.2-1
+  * RRD metric charts:
+    - allow one to override the series object for more complex graphs
+      controlled by the call site.
+    - allow the Undo tool to not be the 0 indexed item in the tool bar.
+    - set cursor pointer for legend for better UX.
+    - allow users to define a click listener for the legend.
 
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Wed, 30 Jul 2025 18:32:29 +0800
+ -- Proxmox Support Team <support@proxmox.com>  Thu, 31 Jul 2025 03:20:54 +0200
 
-proxmox-widget-toolkit (4.3.12-1) bookworm; urgency=medium
-
-  * Update 4.3.12-1 add stable
-
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Wed, 30 Jul 2025 17:41:16 +0800
-
-proxmox-widget-toolkit (4.3.11-1) bookworm; urgency=medium
-
-  * 合并主库提交.
-
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Thu, 15 May 2025 21:12:53 +0800
-
-proxmox-widget-toolkit (4.3.10-1) bookworm; urgency=medium
-
-  * 合并到最新4.3.10提交
-
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Wed, 09 Apr 2025 11:19:45 +0800
-
-proxmox-widget-toolkit (4.3.7-1) bookworm; urgency=medium
-
-  * 合并到最新4.3.7提交
-
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Thu, 13 Mar 2025 15:37:56 +0800
-
-proxmox-widget-toolkit (4.3.4-1) bookworm; urgency=medium
-
-  * 合并主库最新提交，同步变更版本号
-
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Thu, 30 Jan 2025 23:30:02 +0800
-
-proxmox-widget-toolkit (4.3.3-1) bookworm; urgency=medium
-
-  * 合并主库同步变更版本号
-
- -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 28 Nov 2024 15:48:15 +0800
-
-proxmox-widget-toolkit (4.3.2-1) bookworm; urgency=medium
-
-  * 合并主库同步变更版本号
-
- -- Proxmox OEM Team <ymwlpoolc@qq.com>  Wed, 27 Nov 2024 15:10:54 +0800
-
-proxmox-widget-toolkit (4.3.1-1) bookworm; urgency=medium
-
-  * 合并主库同步变更版本号
-
- -- Proxmox OEM Team <ymwlpoolc@qq.com>  Wed, 20 Nov 2024 15:26:24 +0800
-
-proxmox-widget-toolkit (4.3.0-1) bookworm; urgency=medium
-
-  * 合并主库同步变更版本号
-
- -- Proxmox OEM Team <ymwlpoolc@qq.com>  Tue, 12 Nov 2024 10:48:57 +0800
-
-proxmox-widget-toolkit (4.2.4-1) bookworm; urgency=medium
-
-  * 合并主库同步变更版本号
-
- -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 17 Oct 2024 22:11:15 +0800
-
-proxmox-widget-toolkit (4.2.3-1) bookworm; urgency=medium
-
-  * 移除订阅弹窗
-
-  * 添加CI工作流
-  
-  * 移除存储库检测
-
-  * 移除了所有检测，显示所有状态均为良好，保留非订阅存储库显示为警告！
-
- -- Proxmox OEM Team <ymwlpoolc@qq.com>  Thu, 19 Sep 2024 23:39:23 +0800
- 
 proxmox-widget-toolkit (5.0.2) trixie; urgency=medium
 
   * network selector: add support for passing a type query parameter.
