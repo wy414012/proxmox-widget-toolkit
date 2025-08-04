@@ -1,3 +1,9 @@
+proxmox-widget-toolkit (4.3.12-4) bookworm; urgency=medium
+
+  * fix:订阅状态检测
+
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Mon, 04 Aug 2025 18:41:08 +0800
+
 proxmox-widget-toolkit (4.3.12-3) bookworm; urgency=medium
 
   * fix:清理存储库检测

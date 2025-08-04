@@ -22,7 +22,7 @@ Ext.define('Proxmox.widget.NodeInfoRepoStatus', {
         formulas: {
             repoStatus: function (get) {
                 if (get('subscriptionActive') === '' || get('enterpriseRepo') === '') {
-                    return '';
+                    return 'ok';
                 }
 
                 if (get('noSubscriptionRepo') || get('testRepo')) {
