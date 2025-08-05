@@ -289,10 +289,11 @@ Ext.define('Proxmox.node.APTRepositoriesGrid', {
         {
             header: gettext('Components'),
             dataIndex: 'Components',
-            renderer: function (components, metaData, record) {
+            renderer: function (components, _metaData, _record) {
                 if (components === undefined) {
                     return '';
                 }
+                /* 禁用警告逻辑（保留代码）方便后续需要时使用
                 let err = '';
                 if (components.length === 1) {
                     // FIXME: this should be a flag set to the actual repsotiories, i.e., a tristate
@@ -306,8 +307,8 @@ Ext.define('Proxmox.node.APTRepositoriesGrid', {
                             : gettext('The test repository may contain unstable updates');
                         metaData.tdAttr = `data-qtip="${Ext.htmlEncode(Ext.htmlEncode(qtip))}"`;
                     }
-                }
-                return components.join(' ') + err;
+                }*/
+                return components.join(' ');// + err;
             },
             width: 170,
         },
