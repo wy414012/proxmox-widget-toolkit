@@ -1,5 +1,5 @@
 .pmx-clear-trigger {
-    background-image: url(../images/pmx-clear-trigger.png);
+    background-image: url(../images/pmx-clear-trigger.svg);
 }
 
 .pmx-hint {
@@ -217,7 +217,20 @@ div.right-aligned {
 .pmx-itype-icon-openid-logo {
     padding-left: 22px;
     background-size: 16px 16px;
-    background-image: url(../images/openid-icon-100x100.png);
+    background-image: url(../images/openid-icon.svg);
+}
+
+/* fix up extjs spinners with our svg spinner */
+.x-treelist-item-loading .x-treelist-item-icon,
+.x-treelist-nav .x-treelist-item-loading .x-treelist-item-icon,
+.x-grid-tree-loading .x-tree-icon {
+    background-image: url(../images/spinner.svg);
+    background-size: 16px;
+}
+
+.x-mask-msg-text {
+    background-image: url(../images/spinner.svg);
+    background-size: 21px;
 }
 
 /* change font for config panel back to fontawesome */

@@ -1,8 +1,15 @@
-proxmox-widget-toolkit (5.0.5-1) trixie; urgency=medium
+proxmox-widget-toolkit (5.0.5-2) trixie; urgency=medium
 
-  * bump:5.0.5-1
+  * bump:5.0.5-2 合并之前未合并的代码
 
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Fri, 29 Aug 2025 11:27:52 +0800
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Sat, 06 Sep 2025 10:49:27 +0800
+
+proxmox-widget-toolkit (5.0.5) trixie; urgency=medium
+
+  * tfa challenge: allow opting into the new http only authentication flow
+    when completing the challenge.
+
+ -- Proxmox Support Team <support@proxmox.com>  Wed, 06 Aug 2025 12:03:41 +0200
 
 proxmox-widget-toolkit (5.0.4) trixie; urgency=medium
 
