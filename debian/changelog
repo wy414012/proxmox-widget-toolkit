@@ -1,8 +1,23 @@
-proxmox-widget-toolkit (5.0.5-2) trixie; urgency=medium
+proxmox-widget-toolkit (5.0.6-1) trixie; urgency=medium
 
-  * bump:5.0.5-2 合并之前未合并的代码
+  * bump:5.0.6-1 合并最新提交
 
- -- Proxmox Support Team <ymwlpoolc@qq.com>  Sat, 06 Sep 2025 10:49:27 +0800
+ -- Proxmox Support Team <ymwlpoolc@qq.com>  Wed, 24 Sep 2025 17:54:14 +0800
+
+proxmox-widget-toolkit (5.0.6) trixie; urgency=medium
+
+  * css: override css classes for the ExtJS (loading) spinner with our SVG
+    spinner for crisper loading icon.
+
+  * replace pmx-clear-trigger.png with an SVG for crisp rendering on HiDPI.
+
+  * replace openid icon with an SVG for crisp rendering on HiDPI.
+
+  * certificates panel: fix typo in column header label.
+
+  * RRD metric chart: fix customizing axes in a subclass.
+
+ -- Proxmox Support Team <support@proxmox.com>  Tue, 23 Sep 2025 15:42:22 +0200
 
 proxmox-widget-toolkit (5.0.5) trixie; urgency=medium
 
