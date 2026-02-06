@@ -210,7 +210,21 @@ Ext.onReady(function () {
                     usage += cliUsageRenderer(method, endpoint);
                 }
 
-                let sections = [
+                let sections = [];
+
+                if (info.unstable) {
+                    sections.push({
+                        title: 'Unstable',
+                        html: `<div class="proxmox-warning-row" style="padding: 10px;">
+                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                This API endpoint is marked as unstable. All information on this
+                                page is subject to change, including input parameters, return values
+                                and permissions.
+                            </div>`,
+                    });
+                }
+
+                sections.push(
                     {
                         title: 'Description',
                         html: Ext.htmlEncode(info.description),
@@ -221,7 +235,7 @@ Ext.onReady(function () {
                         html: usage,
                         bodyPadding: 10,
                     },
-                ];
+                );
 
                 if (info.parameters && info.parameters.properties) {
                     let pstore = Ext.create('Ext.data.Store', {
@@ -390,53 +404,66 @@ Ext.onReady(function () {
                     });
 
                     sections.push({
-                        xtype: 'gridpanel',
+                        xtype: 'panel',
                         title: 'Returns: ' + rtype,
-                        features: [groupingFeature],
-                        store: rpstore,
-                        viewConfig: {
-                            trackOver: false,
-                            stripeRows: true,
-                            enableTextSelection: true,
-                        },
-                        columns: [
+                        items: [
+                            info.returns.description
+                                ? {
+                                      html: Ext.htmlEncode(info.returns.description),
+                                      bodyPadding: '5px 10px 5px 10px',
+                                  }
+                                : {},
                             {
-                                header: 'Name',
-                                dataIndex: 'name',
-                                flex: 1,
-                            },
-                            {
-                                header: 'Type',
-                                dataIndex: 'type',
-                                renderer: render_type,
-                                flex: 1,
-                            },
-                            {
-                                header: 'Default',
-                                dataIndex: 'default',
-                                flex: 1,
-                            },
-                            {
-                                header: 'Format',
-                                dataIndex: 'type',
-                                renderer: render_format,
-                                flex: 2,
-                            },
-                            {
-                                header: 'Description',
-                                dataIndex: 'description',
-                                renderer: render_description,
-                                flex: 6,
-                            },
-                        ],
-                        bbar: [
-                            {
-                                xtype: 'button',
-                                text: 'Show RAW',
-                                handler: function (btn) {
-                                    rawSection.setVisible(!rawSection.isVisible());
-                                    btn.setText(rawSection.isVisible() ? 'Hide RAW' : 'Show RAW');
+                                xtype: 'gridpanel',
+                                features: [groupingFeature],
+                                store: rpstore,
+                                viewConfig: {
+                                    trackOver: false,
+                                    stripeRows: true,
+                                    enableTextSelection: true,
                                 },
+                                columns: [
+                                    {
+                                        header: 'Name',
+                                        dataIndex: 'name',
+                                        flex: 1,
+                                    },
+                                    {
+                                        header: 'Type',
+                                        dataIndex: 'type',
+                                        renderer: render_type,
+                                        flex: 1,
+                                    },
+                                    {
+                                        header: 'Default',
+                                        dataIndex: 'default',
+                                        flex: 1,
+                                    },
+                                    {
+                                        header: 'Format',
+                                        dataIndex: 'type',
+                                        renderer: render_format,
+                                        flex: 2,
+                                    },
+                                    {
+                                        header: 'Description',
+                                        dataIndex: 'description',
+                                        renderer: render_description,
+                                        flex: 6,
+                                    },
+                                ],
+                                bbar: [
+                                    {
+                                        xtype: 'button',
+                                        text: 'Show RAW',
+                                        handler: function (btn) {
+                                            rawSection.setVisible(!rawSection.isVisible());
+                                            btn.setText(
+                                                rawSection.isVisible() ? 'Hide RAW' : 'Show RAW',
+                                            );
+                                        },
+                                    },
+                                ],
                             },
                         ],
                     });

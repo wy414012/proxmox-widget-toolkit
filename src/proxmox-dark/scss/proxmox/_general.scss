@@ -3,6 +3,10 @@ img[id^="proxmoxlogo-"][id$="-img"] {
   filter: invert(1) hue-rotate(180deg);
 }
 
+img[id^="proxmoxLogoSvg-"][id$="-img"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 // removes the gray line in the header of the mail gateway
 div[id^="versioninfo-"] + div[id^="panel-"] > div[id^="panel-"][id$="-bodyWrap"] > div,
 div.eol-notice + div[id^="panel-"] > div[id^="panel-"][id$="-bodyWrap"] > div {
@@ -41,4 +45,9 @@ div.eol-notice + div[id^="panel-"] > div[id^="panel-"][id$="-bodyWrap"] > div {
 
 .pmx-hint a:active {
   color: $highlighted-text;
+}
+
+// Unclickable elements (mostly for elements with conditional handlers)
+.pmx-unclickable {
+  pointer-events: none;
 }

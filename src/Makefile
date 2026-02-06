@@ -83,6 +83,7 @@ JSSRC=					\
 	panel/WebhookEditPanel.js	\
 	window/Edit.js			\
 	window/PasswordEdit.js		\
+	window/ConfirmRemoveDialog.js	\
 	window/SafeDestroy.js		\
 	window/PackageVersions.js	\
 	window/TaskViewer.js		\
@@ -125,6 +126,10 @@ JSSRC=					\
 
 all: $(SUBDIRS)
 	set -e && for i in $(SUBDIRS); do $(MAKE) -C $$i; done
+
+.PHONY: tidy
+tidy: $(JSSRC)
+	proxmox-biome format --fix $? $(SUBDIRS)
 
 .lint-incremental: $(JSSRC)
 	$(BIOME) lint $?
