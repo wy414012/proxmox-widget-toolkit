@@ -767,6 +767,42 @@ Ext.define('Proxmox.Cookies', {
     },
 });
 
+// Prevents html entities to be interpreted by the browser in grid columns by
+// default. Custom renderer have to take care of this by themselves.
+//
+// Reset the renderer for the 'check', 'boolean', 'number' and 'date' columns
+// back to undefined, since they rely on the renderer being undefined or
+// returning raw HTML.
+Ext.define('Proxmox.grid.column.Column', {
+    override: 'Ext.grid.column.Column',
+
+    renderer: Ext.htmlEncode,
+});
+
+Ext.define('Proxmox.grid.column.Check', {
+    override: 'Ext.grid.column.Check',
+
+    renderer: undefined,
+});
+
+Ext.define('Proxmox.grid.column.Boolean', {
+    override: 'Ext.grid.column.Boolean',
+
+    renderer: undefined,
+});
+
+Ext.define('Proxmox.grid.column.Number', {
+    override: 'Ext.grid.column.Number',
+
+    renderer: undefined,
+});
+
+Ext.define('Proxmox.grid.column.Date', {
+    override: 'Ext.grid.column.Date',
+
+    renderer: undefined,
+});
+
 // force alert boxes to be rendered with an Error Icon
 // since Ext.Msg is an object and not a prototype, we need to override it
 // after the framework has been initiated
